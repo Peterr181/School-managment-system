@@ -1,0 +1,228 @@
+.dashboard__container {
+  width: 100%;
+  &__nav {
+    width: 100%;
+    background-color: #8bc6ec;
+    background: linear-gradient(
+      to right,
+      rgba(1, 120, 188, 1) 0%,
+      rgba(0, 189, 218, 1) 100%
+    );
+
+    padding: 2.5rem;
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 3.5rem;
+    padding-left: 3.5rem;
+    &__text {
+      font-size: 1.8rem;
+    }
+    &__account {
+      display: flex;
+      font-size: 1.6rem;
+      gap: 2rem;
+
+      padding: 1rem;
+      border-radius: 10px;
+    }
+  }
+
+  &__additional {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5rem;
+    padding-left: 5rem;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    align-items: center;
+
+    &__name {
+      font-size: 2rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    &__home {
+      display: flex;
+      gap: 1rem;
+      font-size: 1.4rem;
+    }
+    &__wrapper {
+    }
+  }
+}
+
+.memberitems__container {
+  margin: 0 auto;
+  max-width: 1200px;
+
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.memberitem__container {
+  padding: 3rem;
+  border-radius: 21px;
+  color: #fff;
+  font-size: 1.6rem;
+  transition: 0.3s all;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-10px);
+  }
+
+  p {
+    font-size: 5rem;
+    font-weight: 700;
+  }
+  h2 {
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+}
+
+.quantity__container {
+  display: flex;
+}
+.plusign {
+  transform: translateY(-10px);
+}
+
+.dashboard__mainelements__container {
+  background-color: #f5f5f5;
+  padding-top: 5rem;
+  height: 100%;
+}
+
+.memberitem__container {
+  position: relative;
+
+  /* Existing code... */
+
+  .background-icon {
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    top: 40%;
+    opacity: 0.09;
+    font-size: 9rem;
+    color: black;
+    /* Add any other styles as needed */
+  }
+}
+
+.dashboard__calendarevents__container__calendar {
+  background-color: #fff;
+  padding: 1.6rem;
+  margin-left: 3rem;
+  margin-top: 3rem;
+  border-radius: 21px;
+
+  &__activities {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h2 {
+    padding-bottom: 3rem;
+    font-size: 2rem;
+  }
+}
+
+.custom-calendar {
+  font-size: 16px; /* Set the desired font size */
+}
+
+.custom-calendar .react-calendar__tile,
+.custom-calendar .react-calendar__month-view__days__day {
+  font-size: 14px; /* Set the desired font size */
+}
+
+.custom-calendar .react-calendar__tile {
+  padding: 20px;
+  /* Set the desired padding */
+}
+
+.dashboard__calendarevents__container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1250px;
+  margin: 0 auto;
+  gap: 5rem;
+}
+
+.dashboard__calendarevents__container__exams {
+  background-color: #fff;
+  padding: 1.6rem;
+  height: 100px;
+  border-radius: 21px;
+  width: 100%;
+
+  margin-top: 3rem;
+  margin-right: 3rem;
+}
+
+.custom-calendar {
+  width: 800px !important; /* Set the desired width */
+  border: none !important;
+}
+
+.dashboard__calendarevents__container__legend {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.legend-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.dummy2 {
+  display: flex;
+  align-items: center;
+  padding-bottom: 3rem;
+  font-size: 1.2rem;
+}
+
+.useraddbtn {
+  padding: 1rem;
+  background-color: greenyellow;
+  cursor: pointer;
+  border: none;
+  border-radius: 21px;
+  font-weight: 600;
+  background-color: #0056b3;
+  color: #fff;
+  transition: 1s all;
+
+  &:hover {
+    background-color: #8bc6ec;
+    background: linear-gradient(
+      to right,
+      rgba(1, 120, 188, 1) 0%,
+      rgba(0, 189, 218, 1) 100%
+    );
+    transform: translateY(-5px);
+  }
+}
+
+.dashboard__container__additional__home {
+  align-items: center;
+}
