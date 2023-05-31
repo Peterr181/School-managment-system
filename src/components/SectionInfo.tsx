@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./PageContent/DashboardContent.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
+require("dotenv").config();
 
 interface SectionInfoProps {
   sectionName: string;
@@ -21,6 +22,10 @@ const SectionInfo: React.FC<SectionInfoProps> = ({
   const handleNotAddingUser = () => {
     setAddingUser(false);
   };
+
+  useEffect(() => {
+    console.log(process.env.DB_USER);
+  }, []);
 
   return (
     <div className="dashboard__container__additional">

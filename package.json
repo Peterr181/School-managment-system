@@ -26,6 +26,8 @@
     "dotenv": "^16.0.3",
     "electron-updater": "^5.3.0",
     "oracledb": "^5.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-calendar": "^4.2.1",
     "react-spring": "^9.7.1"
   },
@@ -38,13 +40,56 @@
     "@vitejs/plugin-react": "^3.1.0",
     "electron": "^23.2.0",
     "electron-builder": "^23.6.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "sass": "^1.60.0",
-    "typescript": "^5.0.2",
+    "typescript": "^4.4.3",
     "vite": "^4.1.4",
     "vite-plugin-electron": "^0.11.2",
     "vite-plugin-electron-renderer": "^0.14.1"
+  },
+  "build": {
+    "productName": "Your App Name",
+    "appId": "com.yourapp.app",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "public/**/*",
+      "index.html",
+      "package.json",
+      ".env"
+    ],
+    "extraResources": [],
+    "mac": {
+      "target": [
+        "default"
+      ]
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
