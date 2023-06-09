@@ -1,0 +1,134 @@
+/* SchoolEvent.scss */
+
+.school-events-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 1.4rem;
+}
+
+.school-events-container h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-size: 3rem;
+}
+
+.school-events-container li {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.school-events-container h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-size: 2.3rem;
+  text-align: center;
+}
+
+.school-events-container p {
+  margin-bottom: 10px;
+}
+
+.school-events-container p.date {
+  color: #888888;
+}
+
+.school-events-container p.description {
+  font-style: italic;
+  text-align: center;
+}
+
+.school-events-container li {
+  list-style-type: none;
+}
+
+.event-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.event-item {
+  /* Add styles for each event item */
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.event-description {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.centerfix {
+  text-align: center;
+}
+
+.school-event__container {
+  display: flex;
+  justify-content: center;
+
+  height: 100vh;
+}
+
+.school-event__wrapper {
+  max-width: 400px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+
+  textarea {
+    height: 100px;
+  }
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}

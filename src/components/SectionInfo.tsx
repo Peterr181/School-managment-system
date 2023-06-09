@@ -36,7 +36,7 @@ const SectionInfo: React.FC<SectionInfoProps> = ({
         <p>Home</p>
         <FontAwesomeIcon icon={faCaretRight} />
         <p>{sectionName}</p>
-        {sectionName !== "Dashboard" && (
+        {sectionName !== "Dashboard" && sectionName !== "Events" && (
           <button onClick={handleAddingUser} className="useraddbtn">
             Add {sectionName}
           </button>

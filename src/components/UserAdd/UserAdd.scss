@@ -107,3 +107,12 @@
 .add-user-data__container .address-section .form-group input[type="text"] {
   flex: 3;
 }
+
+.remove-button {
+  background-color: red;
+  border: none;
+  padding: 1rem;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}

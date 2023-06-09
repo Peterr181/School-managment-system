@@ -244,3 +244,245 @@ export const removeUserData = async (id: any) => {
     }
   }
 };
+export async function insertSchoolEvent(eventData: any) {
+  let connection;
+
+  try {
+    connection = await oracledb.getConnection(dbConfig);
+
+    // Fetch the next available ID from the database
+    const getNextIdQuery = `
+      SELECT MAX(ID) as maxId
+      FROM events
+    `;
+    const getNextIdResult = await connection.execute(getNextIdQuery);
+    const nextId = getNextIdResult.rows[0].MAXID + 1;
+
+    // Use the next ID in the eventData object
+    eventData.id = nextId;
+
+    // Format the eventDate string to 'DD-MM-YYYY' format
+    const formattedDate = new Date(eventData.eventDate).toLocaleDateString(
+      "en-GB"
+    );
+
+    const insertQuery = `
+      INSERT INTO events (
+        ID,
+        event_name,
+        event_date,
+        event_description
+      ) VALUES (
+        :id,
+        :eventName,
+        TO_DATE(:eventDate, 'DD-MM-YYYY'),
+        :eventDescription
+      )
+    `;
+
+    await connection.execute(insertQuery, {
+      id: eventData.id,
+      eventName: eventData.eventName,
+      eventDate: formattedDate,
+      eventDescription: eventData.eventDescription,
+    });
+
+    await connection.commit();
+    console.log("School event inserted successfully");
+  } catch (err) {
+    console.error(err);
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }
+}
+
+export interface SchoolEvent {
+  id: number;
+  title: string;
+  date: Date; // Update the type to Date
+  description: string;
+}
+export async function getSchoolEvents(): Promise<SchoolEvent[]> {
+  let connection;
+  try {
+    connection = await oracledb.getConnection(dbConfig);
+
+    const query = `
+      SELECT ID, event_name, event_date, event_description
+      FROM events
+      ORDER BY ID
+    `;
+
+    const result = await connection.execute(query);
+
+    const events: SchoolEvent[] = result.rows.map((row: any) => {
+      const eventDate =
+        row.EVENT_DATE instanceof Date
+          ? row.EVENT_DATE
+          : new Date(row.EVENT_DATE);
+      const formattedDate = eventDate.toLocaleDateString("en-GB");
+
+      return {
+        id: row.ID,
+        title: row.EVENT_NAME,
+        date: formattedDate !== "Invalid Date" ? eventDate : null,
+        description: row.EVENT_DESCRIPTION,
+      };
+    });
+
+    return events;
+  } catch (error) {
+    console.error("Error retrieving school events from the database:", error);
+    throw error;
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (error) {
+        console.error("Error closing database connection:", error);
+      }
+    }
+  }
+}
+
+interface Exam {
+  id: number;
+  name: string;
+  date: Date | null;
+  professor: string;
+}
+export async function getExams(): Promise<Exam[]> {
+  let connection;
+  try {
+    connection = await oracledb.getConnection(dbConfig);
+
+    const query = `
+      SELECT ID, exam_name, exam_date, exam_professor
+      FROM exams
+      ORDER BY ID
+    `;
+
+    const result = await connection.execute(query);
+
+    const exams: Exam[] = result.rows.map((row: any) => {
+      const examDate =
+        row.EXAM_DATE instanceof Date ? row.EXAM_DATE : new Date(row.EXAM_DATE);
+      const formattedDate = examDate.toLocaleDateString("en-GB");
+
+      return {
+        id: row.ID,
+        name: row.EXAM_NAME,
+        date: formattedDate !== "Invalid Date" ? examDate : null,
+        professor: row.EXAM_PROFESSOR,
+      };
+    });
+
+    return exams;
+  } catch (error) {
+    console.error("Error retrieving exams from the database:", error);
+    throw error;
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (error) {
+        console.error("Error closing database connection:", error);
+      }
+    }
+  }
+}
+
+export async function countSchoolEvents(): Promise<number> {
+  let connection;
+  let count = 0;
+
+  try {
+    connection = await oracledb.getConnection(dbConfig);
+
+    const countQuery = `
+      SELECT COUNT(*) AS eventCount
+      FROM events
+    `;
+
+    const result = await connection.execute(countQuery);
+    count = result.rows[0].EVENTCOUNT;
+
+    console.log("Number of school events:", count);
+  } catch (err) {
+    console.error("Error counting school events:", err);
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }
+
+  return count;
+}
+
+export async function insertExamsData(eventData: any) {
+  let connection;
+
+  try {
+    connection = await oracledb.getConnection(dbConfig);
+
+    // Fetch the next available ID from the database
+    const getNextIdQuery = `
+      SELECT MAX(ID) as maxId
+      FROM exams
+    `;
+    const getNextIdResult = await connection.execute(getNextIdQuery);
+    const nextId = getNextIdResult.rows[0].MAXID + 1;
+
+    // Use the next ID in the eventData object
+    eventData.id = nextId;
+
+    // Format the eventDate string to 'DD-MM-YYYY' format
+    const formattedDate = new Date(eventData.examDate).toLocaleDateString(
+      "en-GB"
+    );
+
+    const insertQuery = `
+      INSERT INTO exams (
+        ID,
+        exam_name,
+        exam_date,
+        exam_professor
+      ) VALUES (
+        :id,
+        :examName,
+        TO_DATE(:examDate, 'DD-MM-YYYY'),
+        :examProfessor
+      )
+    `;
+
+    await connection.execute(insertQuery, {
+      id: eventData.id,
+      examName: eventData.examName,
+      examDate: formattedDate,
+      examProfessor: eventData.examProfessor,
+    });
+
+    await connection.commit();
+    console.log("Exam data inserted successfully");
+  } catch (err) {
+    console.error(err);
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }
+}

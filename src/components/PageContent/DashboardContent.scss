@@ -163,7 +163,7 @@
 .dashboard__calendarevents__container__exams {
   background-color: #fff;
   padding: 1.6rem;
-  height: 100px;
+  height: 100%;
   border-radius: 21px;
   width: 100%;
 
@@ -225,4 +225,96 @@
 
 .dashboard__container__additional__home {
   align-items: center;
+}
+
+.dashboard__calendarevents__container__exams {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    transform: translateY(-12px);
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      .form-group {
+        margin-bottom: 15px;
+
+        label {
+          font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+      }
+
+      button[type="submit"],
+      button[type="button"] {
+        padding: 8px 16px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #45a049;
+        }
+      }
+    }
+  }
+}
+
+.header-btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard__calendarevents__container__exams {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.exams-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.exams-element {
+  display: flex;
+  gap: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 21px;
+  padding: 1rem;
+  font-size: 1.3rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
